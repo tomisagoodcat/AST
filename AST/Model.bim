@@ -1,0 +1,2281 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "zh-CN",
+    "dataSources": [
+      {
+        "name": "SqlServer tomisacattomisagoodcatas IASDB",
+        "connectionString": "Provider=SQLNCLI11;Data Source=10.168.1.201;User ID=sa;Persist Security Info=true;Initial Catalog=IASDB",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      },
+      {
+        "name": "remoteSqlServer  ",
+        "connectionString": "Provider=SQLNCLI11;Data Source=10.168.1.201;Initial Catalog=IASDB;User ID=sa;Persist Security Info=true",
+        "impersonationMode": "impersonateServiceAccount",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "DimAge",
+        "columns": [
+          {
+            "name": "ageKey",
+            "dataType": "int64",
+            "sourceColumn": "ageKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ageId",
+            "dataType": "int64",
+            "sourceColumn": "ageId",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "AgeTitle",
+            "dataType": "string",
+            "sourceColumn": "AgeTitle",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimAge",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[DimAge].* FROM [dbo].[DimAge] ",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimAge].* FROM [dbo].[DimAge] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimAge"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "DimCommunity",
+        "columns": [
+          {
+            "name": "ComKey",
+            "dataType": "int64",
+            "sourceColumn": "ComKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ComName",
+            "dataType": "string",
+            "sourceColumn": "ComName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Geokey",
+            "dataType": "int64",
+            "sourceColumn": "Geokey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "field",
+            "dataType": "string",
+            "sourceColumn": "field"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCommunity",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [dbo].[DimCommunity].* FROM [dbo].[DimCommunity]",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimCommunity].* FROM [dbo].[DimCommunity]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "comH",
+            "levels": [
+              {
+                "name": "field",
+                "ordinal": 0,
+                "column": "field"
+              },
+              {
+                "name": "ComName",
+                "ordinal": 1,
+                "column": "ComName"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[DimCommunity].* FROM [dbo].[DimCommunity]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimCommunity"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimCommunity].* FROM [dbo].[DimCommunity]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "DimCrime",
+        "columns": [
+          {
+            "name": "CrimeName",
+            "dataType": "string",
+            "sourceColumn": "CrimeName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CriKey",
+            "dataType": "int64",
+            "sourceColumn": "CriKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "weight",
+            "dataType": "double",
+            "sourceColumn": "weight",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "Category",
+            "dataType": "int64",
+            "sourceColumn": "Category"
+          },
+          {
+            "name": "CrimeCategory",
+            "dataType": "string",
+            "sourceColumn": "CrimeCategory"
+          },
+          {
+            "name": "indexkey",
+            "dataType": "int64",
+            "sourceColumn": "indexkey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCrime",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [dbo].[DimCrime].* FROM [dbo].[DimCrime]",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimCrime].* FROM [dbo].[DimCrime]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[DimCrime].* FROM [dbo].[DimCrime]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimCrime"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimCrime].* FROM [dbo].[DimCrime]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "DimEducation",
+        "columns": [
+          {
+            "name": "title",
+            "dataType": "string",
+            "sourceColumn": "title",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "id",
+            "dataType": "int64",
+            "sourceColumn": "id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "eduKey",
+            "dataType": "int64",
+            "sourceColumn": "eduKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "description",
+            "dataType": "string",
+            "sourceColumn": "description",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimEducation",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [dbo].[DimEducation].* FROM [dbo].[DimEducation]",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimEducation].* FROM [dbo].[DimEducation]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[DimEducation].* FROM [dbo].[DimEducation]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimEducation"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimEducation].* FROM [dbo].[DimEducation]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "DimGeo",
+        "isHidden": true,
+        "columns": [
+          {
+            "name": "locationName",
+            "dataType": "string",
+            "sourceColumn": "locationName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "longtitude",
+            "dataType": "double",
+            "sourceColumn": "longtitude",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "latitude",
+            "dataType": "double",
+            "sourceColumn": "latitude",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "shortName",
+            "dataType": "string",
+            "sourceColumn": "shortName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "county",
+            "dataType": "string",
+            "sourceColumn": "county",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "type",
+            "dataType": "string",
+            "sourceColumn": "type",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "area",
+            "dataType": "string",
+            "sourceColumn": "area",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "geoKey",
+            "dataType": "int64",
+            "sourceColumn": "geoKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimGeo",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[DimGeo].* FROM [dbo].[DimGeo] ",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimGeo].* FROM [dbo].[DimGeo] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimGeo"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "DimIndex",
+        "columns": [
+          {
+            "name": "indexKey",
+            "dataType": "int64",
+            "sourceColumn": "indexKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "indexNo",
+            "dataType": "int64",
+            "sourceColumn": "indexNo",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Title",
+            "dataType": "string",
+            "sourceColumn": "Title",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "IndexTitle",
+            "dataType": "string",
+            "sourceColumn": "IndexTitle",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "indexType",
+            "dataType": "string",
+            "sourceColumn": "indexType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Subcategory",
+            "dataType": "string",
+            "sourceColumn": "Subcategory",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimIndex",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[DimIndex].* FROM [dbo].[DimIndex] ",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[DimIndex].* FROM [dbo].[DimIndex] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimIndex"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "DimLoation",
+        "columns": [
+          {
+            "name": "locationName",
+            "dataType": "string",
+            "sourceColumn": "locationName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "longtitude",
+            "dataType": "double",
+            "sourceColumn": "longtitude",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "latitude",
+            "dataType": "double",
+            "sourceColumn": "latitude",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "shortName",
+            "dataType": "string",
+            "sourceColumn": "shortName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "county",
+            "dataType": "string",
+            "sourceColumn": "county",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "type",
+            "dataType": "string",
+            "sourceColumn": "type",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "area",
+            "dataType": "string",
+            "sourceColumn": "area",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "geoKey",
+            "dataType": "int64",
+            "sourceColumn": "geoKey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimLoation",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [dbo].[DimLoation].* FROM [dbo].[DimLoation]",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimLoation].* FROM [dbo].[DimLoation]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[DimLoation].* FROM [dbo].[DimLoation]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimLoation"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimLoation].* FROM [dbo].[DimLoation]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "DimOccupation",
+        "columns": [
+          {
+            "name": "title",
+            "dataType": "string",
+            "sourceColumn": "title",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "id",
+            "dataType": "int64",
+            "sourceColumn": "id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "OccKey",
+            "dataType": "int64",
+            "sourceColumn": "OccKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "description",
+            "dataType": "string",
+            "sourceColumn": "description",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimOccupation",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [dbo].[DimOccupation].* FROM [dbo].[DimOccupation]",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimOccupation].* FROM [dbo].[DimOccupation]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[DimOccupation].* FROM [dbo].[DimOccupation]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimOccupation"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimOccupation].* FROM [dbo].[DimOccupation]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "DimTime",
+        "columns": [
+          {
+            "name": "FullDateAlternateKey",
+            "dataType": "dateTime",
+            "sourceColumn": "FullDateAlternateKey",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Year",
+            "dataType": "dateTime",
+            "sourceColumn": "Year",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Half_Year",
+            "dataType": "dateTime",
+            "sourceColumn": "Half_Year",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "dateTime",
+            "sourceColumn": "Quarter",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Month",
+            "dataType": "dateTime",
+            "sourceColumn": "Month",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Week",
+            "dataType": "dateTime",
+            "sourceColumn": "Week",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Day_Of_Year",
+            "dataType": "int64",
+            "sourceColumn": "Day_Of_Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Day_Of_Half_Year",
+            "dataType": "int64",
+            "sourceColumn": "Day_Of_Half_Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Day_Of_Quarter",
+            "dataType": "int64",
+            "sourceColumn": "Day_Of_Quarter",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Day_Of_Month",
+            "dataType": "int64",
+            "sourceColumn": "Day_Of_Month",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Day_Of_Week",
+            "dataType": "int64",
+            "sourceColumn": "Day_Of_Week",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Week_Of_Year",
+            "dataType": "int64",
+            "sourceColumn": "Week_Of_Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Month_Of_Year",
+            "dataType": "int64",
+            "sourceColumn": "Month_Of_Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Month_Of_Half_Year",
+            "dataType": "int64",
+            "sourceColumn": "Month_Of_Half_Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Month_Of_Quarter",
+            "dataType": "int64",
+            "sourceColumn": "Month_Of_Quarter",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Quarter_Of_Year",
+            "dataType": "int64",
+            "sourceColumn": "Quarter_Of_Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Quarter_Of_Half_Year",
+            "dataType": "int64",
+            "sourceColumn": "Quarter_Of_Half_Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Half_Year_Of_Year",
+            "dataType": "int64",
+            "sourceColumn": "Half_Year_Of_Year",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "HisTimeKey",
+            "dataType": "int64",
+            "sourceColumn": "HisTimeKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ChineseYearName",
+            "dataType": "string",
+            "sourceColumn": "ChineseYearName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ChineseHalfYearName",
+            "dataType": "string",
+            "sourceColumn": "ChineseHalfYearName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ChineseQuarterName",
+            "dataType": "string",
+            "sourceColumn": "ChineseQuarterName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ChineseMonthName",
+            "dataType": "string",
+            "sourceColumn": "ChineseMonthName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ChineseWeekDayName",
+            "dataType": "string",
+            "sourceColumn": "ChineseWeekDayName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ChineseDay_Name",
+            "dataType": "string",
+            "sourceColumn": "ChineseDay_Name",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ChineseWeekName",
+            "dataType": "string",
+            "sourceColumn": "ChineseWeekName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Year_IntValue",
+            "dataType": "int64",
+            "sourceColumn": "Year_IntValue",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "TimeKey",
+            "dataType": "int64",
+            "sourceColumn": "TimeKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "CalendarYear",
+            "dataType": "int64",
+            "sourceColumn": "CalendarYear",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "CalendarQuarter",
+            "dataType": "int64",
+            "sourceColumn": "CalendarQuarter",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "CalendarSemester",
+            "dataType": "int64",
+            "sourceColumn": "CalendarSemester",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "SpecialEvent",
+            "dataType": "string",
+            "sourceColumn": "SpecialEvent",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Festival",
+            "dataType": "string",
+            "sourceColumn": "Festival",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimTime",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [dbo].[DimTime].* FROM [dbo].[DimTime]",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimTime].* FROM [dbo].[DimTime]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "TimeH",
+            "levels": [
+              {
+                "name": "day",
+                "ordinal": 4,
+                "column": "FullDateAlternateKey"
+              },
+              {
+                "name": "Week",
+                "ordinal": 3,
+                "column": "Week"
+              },
+              {
+                "name": "Month",
+                "ordinal": 2,
+                "column": "Month"
+              },
+              {
+                "name": "Quarter",
+                "ordinal": 1,
+                "column": "Quarter"
+              },
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[DimTime].* FROM [dbo].[DimTime]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimTime"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimTime].* FROM [dbo].[DimTime]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "FactCrime",
+        "columns": [
+          {
+            "name": "CrimeNO",
+            "dataType": "string",
+            "sourceColumn": "CrimeNO",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CrimeKeyWord",
+            "dataType": "string",
+            "sourceColumn": "CrimeKeyWord",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CrimeName",
+            "dataType": "string",
+            "sourceColumn": "CrimeName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "InchargeUnit",
+            "dataType": "string",
+            "sourceColumn": "InchargeUnit",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CrimeCategory",
+            "dataType": "string",
+            "sourceColumn": "CrimeCategory",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CrimeCondition",
+            "dataType": "string",
+            "sourceColumn": "CrimeCondition",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "acceptTime",
+            "dataType": "dateTime",
+            "sourceColumn": "acceptTime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "crimelocationType",
+            "dataType": "string",
+            "sourceColumn": "crimelocationType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "field",
+            "dataType": "string",
+            "sourceColumn": "field",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "registTime",
+            "dataType": "dateTime",
+            "sourceColumn": "registTime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "community",
+            "dataType": "string",
+            "sourceColumn": "community",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CrimeType",
+            "dataType": "string",
+            "sourceColumn": "CrimeType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CrimeStart",
+            "dataType": "dateTime",
+            "sourceColumn": "CrimeStart",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "CrimeEnd",
+            "dataType": "dateTime",
+            "sourceColumn": "CrimeEnd",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "DiscoverTime",
+            "dataType": "dateTime",
+            "sourceColumn": "DiscoverTime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "geo",
+            "dataType": "string",
+            "sourceColumn": "geo",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "locaiton",
+            "dataType": "string",
+            "sourceColumn": "locaiton",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "enteringTime",
+            "dataType": "dateTime",
+            "sourceColumn": "enteringTime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "InvestigateBoolean",
+            "dataType": "string",
+            "sourceColumn": "InvestigateBoolean",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "InvestigateUnit",
+            "dataType": "string",
+            "sourceColumn": "InvestigateUnit",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "deathNum",
+            "dataType": "int64",
+            "sourceColumn": "deathNum",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SolvedTime",
+            "dataType": "dateTime",
+            "sourceColumn": "SolvedTime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "CrimeKey",
+            "dataType": "int64",
+            "sourceColumn": "CrimeKey"
+          },
+          {
+            "name": "CommKey",
+            "dataType": "int64",
+            "sourceColumn": "CommKey"
+          },
+          {
+            "type": "calculated",
+            "name": "timekey",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "year(FactCrime[CrimeStart])*10000+MONTH(FactCrime[CrimeStart])*100+day(FactCrime[CrimeStart])"
+          },
+          {
+            "type": "calculated",
+            "name": "CrimeWeight",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "RELATED(DimCrime[weight])"
+          },
+          {
+            "name": "CrimeValue",
+            "dataType": "double",
+            "sourceColumn": "CrimeValue"
+          },
+          {
+            "name": "TimeKeyF",
+            "dataType": "int64",
+            "sourceColumn": "TimeKeyF"
+          },
+          {
+            "type": "calculated",
+            "name": "dayTime",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": "date(year(FactCrime[CrimeStart]),MONTH(FactCrime[CrimeStart]),day(FactCrime[CrimeStart]))"
+          },
+          {
+            "name": "datetimeValue",
+            "dataType": "dateTime",
+            "sourceColumn": "datetimeValue"
+          },
+          {
+            "type": "calculated",
+            "name": "relatemonth",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "year(FactCrime[CrimeStart])*100+MONTH(FactCrime[CrimeStart])"
+          },
+          {
+            "type": "calculated",
+            "name": "计算的列1",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": "RELATED(DimTime[Month])"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactCrime",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [dbo].[FactCrime].* FROM [dbo].[FactCrime]",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[FactCrime].* FROM [dbo].[FactCrime]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "PlifeScore",
+            "expression": "100+CALCULATE(AVERAGE(FactCrime[CrimeValue]),DimCrime[indexkey]=1)"
+          },
+          {
+            "name": "PpropertyScore",
+            "expression": "100+CALCULATE(AVERAGE(FactCrime[CrimeValue]),DimCrime[indexkey]=2)"
+          },
+          {
+            "name": "PfoodScore",
+            "expression": "100+CALCULATE(AVERAGE(FactCrime[CrimeValue]),DimCrime[indexkey]=3)"
+          },
+          {
+            "name": "PwebScore",
+            "expression": "100+CALCULATE(AVERAGE(FactCrime[CrimeValue]),DimCrime[indexkey]=4)"
+          },
+          {
+            "name": "PenviormentScore",
+            "expression": "100+CALCULATE(AVERAGE(FactCrime[CrimeValue]),DimCrime[indexkey]=5)"
+          },
+          {
+            "name": "PtotalScore",
+            "expression": "100+CALCULATE(AVERAGE(FactCrime[CrimeValue]),DimCrime[indexkey]=6)"
+          },
+          {
+            "name": "BIPScore",
+            "description": "计算犯罪率得分，犯罪次数越多，得分越低，但没有加入权重",
+            "expression": "100+AVERAGE(FactCrime[CrimeValue])"
+          },
+          {
+            "name": "PScore",
+            "description": "计算犯罪率得分，犯罪次数越多，得分越低，加入权重",
+            "expression": " IF([BIPScore]>100,100,[BIPScore])",
+            "formatString": "0.00"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[FactCrime].* FROM [dbo].[FactCrime]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "FactCrime"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[FactCrime].* FROM [dbo].[FactCrime]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "FactInvestigation",
+        "columns": [
+          {
+            "name": "IntervieweeKey",
+            "dataType": "int64",
+            "sourceColumn": "IntervieweeKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "leavingPeriod",
+            "dataType": "int64",
+            "sourceColumn": "leavingPeriod",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "geoKey",
+            "dataType": "int64",
+            "sourceColumn": "geoKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Value",
+            "dataType": "int64",
+            "sourceColumn": "Value",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "educatonKey",
+            "dataType": "int64",
+            "sourceColumn": "educatonKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ageKey",
+            "dataType": "int64",
+            "sourceColumn": "ageKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "occupationKey",
+            "dataType": "int64",
+            "sourceColumn": "occupationKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "IndexTitle",
+            "dataType": "string",
+            "sourceColumn": "IndexTitle",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "sourcetype",
+            "dataType": "string",
+            "sourceColumn": "sourcetype",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "sex",
+            "dataType": "int64",
+            "sourceColumn": "sex",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "timekey",
+            "dataType": "int64",
+            "sourceColumn": "timekey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "indexkey",
+            "dataType": "int64",
+            "sourceColumn": "indexkey"
+          },
+          {
+            "type": "calculated",
+            "name": "xingbie",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "if(FactInvestigation[sex]=1,\"男\",\"女\")"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactInvestigation",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [dbo].[FactInvestigation].* FROM [dbo].[FactInvestigation]",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[FactInvestigation].* FROM [dbo].[FactInvestigation]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "OlifeScore",
+            "expression": [
+              " (",
+              "    (",
+              "        (",
+              "            COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 1&&[value]=1) )",
+              "                * 2",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 1 &&[value]=2) )",
+              "                    * 1",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 1&&[value]=3 ) )",
+              "                    * ( -1 )",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 1&&[value]=4 ) )",
+              "                    * ( -2 )",
+              "        )",
+              "            / COUNTROWS ( filter('FactInvestigation' ,[indexkey]=1))",
+              "            / 2",
+              "            * 100",
+              "            + 100",
+              "    )",
+              "        / 2",
+              ")",
+              ""
+            ],
+            "formatString": "0.00"
+          },
+          {
+            "name": "OpropertyScore",
+            "expression": [
+              " (",
+              "    (",
+              "        (",
+              "            COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 2&&[value]=1) )",
+              "                * 2",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 2 &&[value]=2) )",
+              "                    * 1",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 2&&[value]=3 ) )",
+              "                    * ( -1 )",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] =2&&[value]=4 ) )",
+              "                    * ( -2 )",
+              "        )",
+              "            / COUNTROWS ( filter('FactInvestigation' ,[indexkey]=2))",
+              "            / 2",
+              "            * 100",
+              "            + 100",
+              "    )",
+              "        / 2",
+              ")"
+            ],
+            "formatString": "0.00"
+          },
+          {
+            "name": "OfoodScore",
+            "expression": [
+              " (",
+              "    (",
+              "        (",
+              "            COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 3&&[value]=1) )",
+              "                * 2",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 3 &&[value]=2) )",
+              "                    * 1",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 3&&[value]=3 ) )",
+              "                    * ( -1 )",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] =3&&[value]=4 ) )",
+              "                    * ( -2 )",
+              "        )",
+              "            / COUNTROWS ( filter('FactInvestigation' ,[indexkey]=3))",
+              "            / 2",
+              "            * 100",
+              "            + 100",
+              "    )",
+              "        / 2",
+              ")"
+            ],
+            "formatString": "0.00"
+          },
+          {
+            "name": "OwebScore",
+            "expression": [
+              " (",
+              "    (",
+              "        (",
+              "            COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 4&&[value]=1) )",
+              "                * 2",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 4 &&[value]=2) )",
+              "                    * 1",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 4&&[value]=3 ) )",
+              "                    * ( -1 )",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] =4&&[value]=4 ) )",
+              "                    * ( -2 )",
+              "        )",
+              "            / COUNTROWS ( filter('FactInvestigation' ,[indexkey]=4))",
+              "            / 2",
+              "            * 100",
+              "            + 100",
+              "    )",
+              "        / 2",
+              ")"
+            ]
+          },
+          {
+            "name": "OenviormentScore",
+            "expression": [
+              " (",
+              "    (",
+              "        (",
+              "            COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 5&&[value]=1) )",
+              "                * 2",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 5&&[value]=2) )",
+              "                    * 1",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 5&&[value]=3 ) )",
+              "                    * ( -1 )",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] =5&&[value]=4 ) )",
+              "                    * ( -2 )",
+              "        )",
+              "            / COUNTROWS ( filter('FactInvestigation' ,[indexkey]=5))",
+              "            / 2",
+              "            * 100",
+              "            + 100",
+              "    )",
+              "        / 2",
+              ")"
+            ],
+            "formatString": "0.00"
+          },
+          {
+            "name": "OtotalScore",
+            "expression": [
+              " (",
+              "    (",
+              "        (",
+              "            COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 6&&[value]=1) )",
+              "                * 2",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 6 &&[value]=2) )",
+              "                    * 1",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] = 6&&[value]=3 ) )",
+              "                    * ( -1 )",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [indexkey] =6&&[value]=4 ) )",
+              "                    * ( -2 )",
+              "        )",
+              "            / COUNTROWS ( filter('FactInvestigation' ,[indexkey]=6))",
+              "            / 2",
+              "            * 100",
+              "            + 100",
+              "    )",
+              "        / 2",
+              ")"
+            ],
+            "formatString": "0.00"
+          },
+          {
+            "name": "Oscore",
+            "expression": " [OlifeScore]*0.2+[OpropertyScore]*0.2+[OtotalScore]*0.2+[OenviormentScore]*0.1+[OfoodScore]*0.2+[OwebScore]*0.1"
+          },
+          {
+            "name": "BIScore",
+            "expression": [
+              " (",
+              "    (",
+              "        (",
+              "            COUNTROWS ( FILTER ( 'FactInvestigation', [value]=1) )",
+              "                * 2",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [value]=2) )",
+              "                    * 1",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation',[value]=3 ) )",
+              "                    * ( -1 )",
+              "                + COUNTROWS ( FILTER ( 'FactInvestigation', [value]=4 ) )",
+              "                    * ( -2 )",
+              "        )",
+              "            / COUNTROWS ( 'FactInvestigation' )",
+              "            / 2",
+              "            * 100",
+              "            + 100",
+              "    )",
+              "        / 2",
+              ")"
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[FactInvestigation].* FROM [dbo].[FactInvestigation]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "FactInvestigation"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[FactInvestigation].* FROM [dbo].[FactInvestigation]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "FactInvestigationP",
+        "columns": [
+          {
+            "name": "IntervieweeKey",
+            "dataType": "int64",
+            "sourceColumn": "IntervieweeKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "leavingPeriod",
+            "dataType": "int64",
+            "sourceColumn": "leavingPeriod",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "geoKey",
+            "dataType": "int64",
+            "sourceColumn": "geoKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "LifeValue",
+            "dataType": "int64",
+            "sourceColumn": "LifeValue",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "propertyValue",
+            "dataType": "int64",
+            "sourceColumn": "propertyValue",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "foodValue",
+            "dataType": "int64",
+            "sourceColumn": "foodValue",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "webValue",
+            "dataType": "int64",
+            "sourceColumn": "webValue",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "environmentValue",
+            "dataType": "int64",
+            "sourceColumn": "environmentValue",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "totalValue",
+            "dataType": "int64",
+            "sourceColumn": "totalValue",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "educatonKey",
+            "dataType": "int64",
+            "sourceColumn": "educatonKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ageKey",
+            "dataType": "int64",
+            "sourceColumn": "ageKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "occupationKey",
+            "dataType": "int64",
+            "sourceColumn": "occupationKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "sourcetype",
+            "dataType": "string",
+            "sourceColumn": "sourcetype",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "sex",
+            "dataType": "int64",
+            "sourceColumn": "sex",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "timekey",
+            "dataType": "int64",
+            "sourceColumn": "timekey",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactInvestigationP",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[FactInvestigationP].* FROM [dbo].[FactInvestigationP] ",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "LifeValueScore",
+            "expression": " (( (countrows(filter('FactInvestigationP',[LifeValue]=1))*2+countrows(filter('FactInvestigationP',[LifeValue]=2))*1+countrows(filter('FactInvestigationP',[LifeValue]=3))*(-1)+countrows(filter('FactInvestigationP',[LifeValue]=4))*(-2))/COUNTROWS('FactInvestigationP')/2*100+100)/2)"
+          },
+          {
+            "name": "webValueScore",
+            "expression": " (( (countrows(filter('FactInvestigationP',[webValue]=1))*2+countrows(filter('FactInvestigationP',[webValue]=2))*1+countrows(filter('FactInvestigationP',[webValue]=3))*(-1)+countrows(filter('FactInvestigationP',[webValue]=4))*(-2))/COUNTROWS('FactInvestigationP')/2*100+100)/2)"
+          },
+          {
+            "name": "totalValueScore",
+            "expression": " (( (countrows(filter('FactInvestigationP',[totalValue]=1))*2+countrows(filter('FactInvestigationP',[totalValue]=2))*1+countrows(filter('FactInvestigationP',[totalValue]=3))*(-1)+countrows(filter('FactInvestigationP',[totalValue]=4))*(-2))/COUNTROWS('FactInvestigationP')/2*100+100)/2)"
+          },
+          {
+            "name": "propertyValueScore",
+            "expression": "(( (countrows(filter('FactInvestigationP',[propertyValue]=1))*2+countrows(filter('FactInvestigationP',[propertyValue]=2))*1+countrows(filter('FactInvestigationP',[propertyValue]=3))*(-1)+countrows(filter('FactInvestigationP',[propertyValue]=4))*(-2))/COUNTROWS('FactInvestigationP')/2*100+100)/2)"
+          },
+          {
+            "name": "EnVScore",
+            "expression": "(( (countrows(filter('FactInvestigationP',[environmentValue]=1))*2+countrows(filter('FactInvestigationP',[environmentValue]=2))*1+countrows(filter('FactInvestigationP',[environmentValue]=3))*(-1)+countrows(filter('FactInvestigationP',[environmentValue]=4))*(-2))/COUNTROWS('FactInvestigationP')/2*100+100)/2)"
+          },
+          {
+            "name": "foodValueScore",
+            "expression": "(( (countrows(filter('FactInvestigationP',[foodValue]=1))*2+countrows(filter('FactInvestigationP',[foodValue]=2))*1+countrows(filter('FactInvestigationP',[foodValue]=3))*(-1)+countrows(filter('FactInvestigationP',[foodValue]=4))*(-2))/COUNTROWS('FactInvestigationP')/2*100+100)/2)"
+          },
+          {
+            "name": "Score",
+            "expression": "[LifeValueScore]*0.1+[totalValueScore]*0.2+[propertyValueScore]*0.2+[EnVScore]*0.2+[foodValueScore]*0.2+[webValueScore]*0.1"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[FactInvestigationP].* FROM [dbo].[FactInvestigationP] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "FactInvestigationP"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "CalculatedTable 1",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "ageKey",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimAge[ageKey]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "ageId",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimAge[ageId]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "AgeTitle",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimAge[AgeTitle]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Description",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimAge[Description]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": "DimAge"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimDept",
+        "columns": [
+          {
+            "name": "DEPT_ID",
+            "dataType": "string",
+            "sourceColumn": "DEPT_ID",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DEPT_NAME",
+            "dataType": "string",
+            "sourceColumn": "DEPT_NAME",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "P_DEPT_ID",
+            "dataType": "string",
+            "sourceColumn": "P_DEPT_ID",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "IS_USED",
+            "dataType": "string",
+            "sourceColumn": "IS_USED",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SORT_NO",
+            "dataType": "string",
+            "sourceColumn": "SORT_NO",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "MANAGER_ID",
+            "dataType": "string",
+            "sourceColumn": "MANAGER_ID",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DEPT_TYPE",
+            "dataType": "string",
+            "sourceColumn": "DEPT_TYPE",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "PHONE_NO",
+            "dataType": "string",
+            "sourceColumn": "PHONE_NO",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "SERVER_ID",
+            "dataType": "string",
+            "sourceColumn": "SERVER_ID",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DEPT_PATH",
+            "dataType": "string",
+            "sourceColumn": "DEPT_PATH",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "hotline_no",
+            "dataType": "string",
+            "sourceColumn": "hotline_no",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "last_dp_id",
+            "dataType": "string",
+            "sourceColumn": "last_dp_id",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CITY_CODE",
+            "dataType": "string",
+            "sourceColumn": "CITY_CODE",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "AREA_CODE",
+            "dataType": "string",
+            "sourceColumn": "AREA_CODE",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "is_from",
+            "dataType": "string",
+            "sourceColumn": "is_from",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "IS_UNIT",
+            "dataType": "string",
+            "sourceColumn": "IS_UNIT",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "indextitle",
+            "dataType": "string",
+            "sourceColumn": "indextitle"
+          },
+          {
+            "name": "indexkey",
+            "dataType": "int64",
+            "sourceColumn": "indexkey"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimDept",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [dbo].[DimDept].* FROM [dbo].[DimDept]",
+              "dataSource": "remoteSqlServer  "
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimDept].* FROM [dbo].[DimDept]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[DimDept].* FROM [dbo].[DimDept]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimDept"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[DimDept].* FROM [dbo].[DimDept]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "Factworkorder",
+        "columns": [
+          {
+            "name": "workorder_id",
+            "dataType": "string",
+            "sourceColumn": "workorder_id",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workorder_title",
+            "dataType": "string",
+            "sourceColumn": "workorder_title",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workorder_content",
+            "dataType": "string",
+            "sourceColumn": "workorder_content",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workorder_time",
+            "dataType": "dateTime",
+            "sourceColumn": "workorder_time",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "workorder_sub_time",
+            "dataType": "dateTime",
+            "sourceColumn": "workorder_sub_time",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "workorder_sub_man",
+            "dataType": "string",
+            "sourceColumn": "workorder_sub_man",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workorder_state",
+            "dataType": "string",
+            "sourceColumn": "workorder_state",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workorder_type",
+            "dataType": "string",
+            "sourceColumn": "workorder_type",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workorder_field",
+            "dataType": "string",
+            "sourceColumn": "workorder_field",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workorder_area",
+            "dataType": "string",
+            "sourceColumn": "workorder_area",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workroder_source",
+            "dataType": "string",
+            "sourceColumn": "workroder_source",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "city_code",
+            "dataType": "string",
+            "sourceColumn": "city_code",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "area_code",
+            "dataType": "string",
+            "sourceColumn": "area_code",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "longitude",
+            "dataType": "string",
+            "sourceColumn": "longitude",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "latitude",
+            "dataType": "string",
+            "sourceColumn": "latitude",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "attach_id",
+            "dataType": "string",
+            "sourceColumn": "attach_id",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "is_overt",
+            "dataType": "string",
+            "sourceColumn": "is_overt",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "complaint_id",
+            "dataType": "string",
+            "sourceColumn": "complaint_id",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "plan_id",
+            "dataType": "int64",
+            "sourceColumn": "plan_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "is_excellent",
+            "dataType": "string",
+            "sourceColumn": "is_excellent",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workorder_closed_man",
+            "dataType": "string",
+            "sourceColumn": "workorder_closed_man",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workorder_closed_desc",
+            "dataType": "string",
+            "sourceColumn": "workorder_closed_desc",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "workorder_closed_time",
+            "dataType": "dateTime",
+            "sourceColumn": "workorder_closed_time",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "workorder_vali_code",
+            "dataType": "string",
+            "sourceColumn": "workorder_vali_code",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "ispolice_event",
+            "dataType": "string",
+            "sourceColumn": "ispolice_event",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "police_user_id",
+            "dataType": "string",
+            "sourceColumn": "police_user_id",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "receive_alarm_user",
+            "dataType": "string",
+            "sourceColumn": "receive_alarm_user",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "is_update",
+            "dataType": "string",
+            "sourceColumn": "is_update",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "alarm_type",
+            "dataType": "string",
+            "sourceColumn": "alarm_type",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "call_police",
+            "dataType": "int64",
+            "sourceColumn": "call_police",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "__timestamp",
+            "dataType": "dateTime",
+            "sourceColumn": "__timestamp",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "type": "calculated",
+            "name": "timekey",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "year(Factworkorder[workorder_time])*10000+month(Factworkorder[workorder_time])*100+day(Factworkorder[workorder_time])"
+          },
+          {
+            "type": "calculated",
+            "name": "dayvalue",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": "date(year(Factworkorder[workorder_time]),MONTH(Factworkorder[workorder_time]),day(Factworkorder[workorder_time]))"
+          },
+          {
+            "type": "calculated",
+            "name": "monthValue",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": "RELATED(DimTime[Month])"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Factworkorder",
+            "dataView": "full",
+            "source": {
+              "query": "SELECT [dbo].[Factworkorder].* FROM [dbo].[Factworkorder]",
+              "dataSource": "remoteSqlServer  "
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[Factworkorder].* FROM [dbo].[Factworkorder]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": "SELECT [dbo].[Factworkorder].* FROM [dbo].[Factworkorder]"
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Factworkorder"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "QueryEditorSerialization",
+            "value": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[Factworkorder].* FROM [dbo].[Factworkorder]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+          }
+        ]
+      },
+      {
+        "name": "info_workerorder_dept",
+        "columns": [
+          {
+            "name": "id",
+            "dataType": "int64",
+            "sourceColumn": "id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "plan_id",
+            "dataType": "int64",
+            "sourceColumn": "plan_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "workorder_id",
+            "dataType": "string",
+            "sourceColumn": "workorder_id",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "dept_id",
+            "dataType": "string",
+            "sourceColumn": "dept_id",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "is_master",
+            "dataType": "string",
+            "sourceColumn": "is_master",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "is_accept",
+            "dataType": "string",
+            "sourceColumn": "is_accept",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "accept_time",
+            "dataType": "dateTime",
+            "sourceColumn": "accept_time",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "dept_sub_time",
+            "dataType": "dateTime",
+            "sourceColumn": "dept_sub_time",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "__timestamp",
+            "dataType": "dateTime",
+            "sourceColumn": "__timestamp",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "create_user",
+            "dataType": "string",
+            "sourceColumn": "create_user",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "create_source",
+            "dataType": "string",
+            "sourceColumn": "create_source",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "dept_closed",
+            "dataType": "string",
+            "sourceColumn": "dept_closed",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "dept_closed_name",
+            "dataType": "string",
+            "sourceColumn": "dept_closed_name",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "dept_closed_time",
+            "dataType": "dateTime",
+            "sourceColumn": "dept_closed_time",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "info_workerorder_dept",
+            "dataView": "full",
+            "source": {
+              "query": " SELECT [dbo].[info_workerorder_dept].* FROM [dbo].[info_workerorder_dept] ",
+              "dataSource": "SqlServer tomisacattomisagoodcatas IASDB"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[info_workerorder_dept].* FROM [dbo].[info_workerorder_dept] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "info_workerorder_dept"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "f92fd833-6c10-4968-a835-03b5cbd90c87",
+        "fromTable": "FactInvestigationP",
+        "fromColumn": "ageKey",
+        "toTable": "DimAge",
+        "toColumn": "ageKey"
+      },
+      {
+        "name": "656cd151-0b57-4735-8ac4-e54cb3736423",
+        "fromTable": "FactInvestigationP",
+        "fromColumn": "educatonKey",
+        "toTable": "DimEducation",
+        "toColumn": "eduKey"
+      },
+      {
+        "name": "5463d2ac-3f1b-4b12-aa0a-23020a8ecfa1",
+        "fromTable": "FactInvestigationP",
+        "fromColumn": "geoKey",
+        "toTable": "DimLoation",
+        "toColumn": "geoKey"
+      },
+      {
+        "name": "53f5f521-5624-47f9-bde5-804b5439588e",
+        "fromTable": "FactInvestigationP",
+        "fromColumn": "occupationKey",
+        "toTable": "DimOccupation",
+        "toColumn": "OccKey"
+      },
+      {
+        "name": "d4ef405d-18c8-4de1-bac4-4dc05fdb9565",
+        "fromTable": "FactInvestigationP",
+        "fromColumn": "timekey",
+        "toTable": "DimTime",
+        "toColumn": "TimeKey"
+      },
+      {
+        "name": "ee2491c0-425a-4ef6-8f24-ac1540502076",
+        "fromTable": "FactCrime",
+        "fromColumn": "CrimeKey",
+        "toTable": "DimCrime",
+        "toColumn": "CriKey"
+      },
+      {
+        "name": "8aaf59f8-e50c-4583-807d-0a8520202048",
+        "fromTable": "FactCrime",
+        "fromColumn": "CommKey",
+        "toTable": "DimCommunity",
+        "toColumn": "ComKey"
+      },
+      {
+        "name": "7a348cf5-2a62-4697-b2c2-d6bab3196c4b",
+        "fromTable": "DimCrime",
+        "fromColumn": "indexkey",
+        "toTable": "DimIndex",
+        "toColumn": "indexKey"
+      },
+      {
+        "name": "d8f45ab6-6b04-4ccd-8243-c393a1e4e26c",
+        "fromTable": "FactInvestigation",
+        "fromColumn": "indexkey",
+        "toTable": "DimIndex",
+        "toColumn": "indexKey"
+      },
+      {
+        "name": "80314772-a26c-428c-a686-dccfeeca15bb",
+        "fromTable": "FactInvestigation",
+        "fromColumn": "educatonKey",
+        "toTable": "DimEducation",
+        "toColumn": "eduKey"
+      },
+      {
+        "name": "356297fd-cb2e-46c8-8c3c-72eac54abec6",
+        "fromTable": "FactInvestigation",
+        "fromColumn": "geoKey",
+        "toTable": "DimLoation",
+        "toColumn": "geoKey"
+      },
+      {
+        "name": "02ccab84-7e3c-4c56-9644-f34c4b27bcec",
+        "fromTable": "FactInvestigation",
+        "fromColumn": "occupationKey",
+        "toTable": "DimOccupation",
+        "toColumn": "OccKey"
+      },
+      {
+        "name": "3db34b52-eaee-4638-95b3-68b87586bdc3",
+        "fromTable": "FactInvestigation",
+        "fromColumn": "ageKey",
+        "toTable": "DimAge",
+        "toColumn": "ageKey"
+      },
+      {
+        "name": "e3cbaa4f-1ce9-4bd9-a757-893fafca4a01",
+        "fromTable": "FactCrime",
+        "fromColumn": "TimeKeyF",
+        "toTable": "DimTime",
+        "toColumn": "TimeKey"
+      },
+      {
+        "name": "83e9f7af-ea2e-41bc-9250-737b344524b0",
+        "fromTable": "Factworkorder",
+        "fromColumn": "timekey",
+        "toTable": "DimTime",
+        "toColumn": "TimeKey"
+      },
+      {
+        "name": "b0b71128-1692-49a5-adbb-063883d899fd",
+        "fromTable": "info_workerorder_dept",
+        "fromColumn": "dept_id",
+        "toTable": "DimDept",
+        "toColumn": "DEPT_ID"
+      },
+      {
+        "name": "5dc9df52-c8f7-4eee-b972-6b8b01efccbd",
+        "fromTable": "info_workerorder_dept",
+        "fromColumn": "workorder_id",
+        "toTable": "Factworkorder",
+        "toColumn": "workorder_id"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
